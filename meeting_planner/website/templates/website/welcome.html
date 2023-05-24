@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<h1>Welcome to Mypage!</h1>
+    <p>
+        This is the demo application using
+        <em>Django: Getting Started</em>
+        on <a href="https://github.com/lc930627">
+        My Github</a>. </p>
+    <p> Brought to you by <em>Xuanzhou Yang</em> in <a href="https://www.hitachi-systems-ps.co.jp/">
+        Hitachi Systems PS</a>.
+    </p>
+
+
+    <h2>About Me</h2>
+    <p>
+        The current events and publications are as following:
+
+    </p>
+    <ul>
+        {% for meeting in meetings %}
+            <li>
+                <a href="{% url 'detail' meeting.id %}">
+                    {{ meeting.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Available Room</h2>
+        <p>
+            You can find available room for meeting from the following link.
+        </p>
+        <a href="{% url 'rooms' %}">Rooms List</a>
+
+     <h2>Booking</h2>
+        <p>
+            You can schedule a new meeting from this <a href="{% url 'new' %}">link</a>.
+
+        </p>
+
+
+{% endblock %}
